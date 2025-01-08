@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Components/login/login.component';
 import { RegistrarComponent } from './Components/registrar/registrar.component';
 import { MenuProveedorComponent } from './Components/menu-proveedor/menu-proveedor.component';
+import { MenuClienteComponent } from './Components/menu-cliente/menu-cliente.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'proveedor',
     component: MenuProveedorComponent,
+  },
+  {
+    path: 'home',
+    component: MenuClienteComponent
   }
 ];
 

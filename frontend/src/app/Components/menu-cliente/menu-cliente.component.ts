@@ -7,4 +7,24 @@ import { Component } from '@angular/core';
 })
 export class MenuClienteComponent {
 
+  ventana: string = 'nombre';
+
+  ngOnInit(): void {
+    if (sessionStorage.getItem('type') == 'Cliente') {
+      this.ventana = 'home';
+    }
+    this.ventana = 'inventarioprov';
+
+    
+  }
+
+  cambioVentana(ventana: string) {
+    this.ventana = ventana;
+  }
+
+  logout() {
+    sessionStorage.clear();
+    window.location.href = '/login';
+  }
+
 }
