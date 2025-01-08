@@ -22,9 +22,9 @@ import static org.springframework.security.core.userdetails.User.*;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final usuarioRepository usuarioRepo;
-    private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtil jwtUtil;
+    //private final PasswordEncoder passwordEncoder;
+    //private final AuthenticationManager authenticationManager;
+    //private final JwtUtil jwtUtil;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -34,11 +34,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         return builder()
                 .username(usuario.getEmail())
                 .password(usuario.getPassword())
-                //.authorities("1") // Aquí puedes configurar roles dinámicos si los tienes
+                .authorities("1") // Aquí puedes configurar roles dinámicos si los tienes
                 .build();
     }
 
-    public AuthenticationResponse register(RequestRegister request) {
+    /*public AuthenticationResponse register(RequestRegister request) {
         var user = builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -51,6 +51,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .token(token)
                 .build();
     }
+
 
     public AuthenticationResponse authenticate(RequestRegister request) {
         authenticationManager.authenticate(
@@ -65,6 +66,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         return AuthenticationResponse.builder()
                 .token(token)
                 .build();
-    }
+    }*/
 
 }

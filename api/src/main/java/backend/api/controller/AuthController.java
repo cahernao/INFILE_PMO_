@@ -3,6 +3,8 @@ package backend.api.controller;
 
 
 import backend.api.model.RequestRegister;
+import backend.api.model.Rol;
+import backend.api.model.Usuario;
 import backend.api.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,18 +23,44 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
+    private final PasswordEncoder passwordEncoder;
+    private final backend.api.repository.usuarioRepository usuarioRepository;
 
 
     @PostMapping("/login")
     public String login(@RequestBody RequestRegister requestRegister) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestRegister.getUsername(), requestRegister.getPassword()));
-        UserDetails userDetails = userDetailsService.loadUserByUsername(requestRegister.getUsername());
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestRegister.getEmail(), requestRegister.getPassword()));
+        UserDetails userDetails = userDetailsService.loadUserByUsername(requestRegister.getEmail());
         return jwtUtil.generateToken(userDetails);
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RequestRegister requestRegister) {
-        return ResponseEntity.ok(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestRegister.getUsername(), requestRegister.getPassword())));
+
+        try{
+            if (requestRegister.getUsername() == null || requestRegister.getPassword() == null) {
+                throw new IllegalArgumentException("No existen credenciales");
+            }
+
+            Usuario nuevoUsuario = new Usuario();
+            nuevoUsuario.setEmail(requestRegister.getEmail());
+            nuevoUsuario.setPassword(passwordEncoder.encode(requestRegister.getPassword()));
+            nuevoUsuario.setNombre(requestRegister.getUsername());
+
+
+            Rol rol = new Rol();
+            rol.setId(1); // POR DEFECTO USUARIO
+
+            nuevoUsuario.setRol(rol);
+
+            usuarioRepository.save(nuevoUsuario);
+
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestRegister.getEmail(), requestRegister.getPassword()));
+            return ResponseEntity.ok().body("Usuario registrado exitosamente");
+
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/test")
