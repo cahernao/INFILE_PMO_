@@ -1,0 +1,39 @@
+<app-menu-inicial></app-menu-inicial>
+<div class="d-flex justify-content-center align-items-center" style="height: auto;">
+  <div id="fondo" class="form p-3">
+    <div calss="row">
+      <h2>Iniciar Sesión</h2>
+    </div>
+    <div class="row">
+      <div class="form">
+        <div class="p-2">
+          <label for="usuario" class="form-label">Usuario</label>
+          <input
+            type="text"
+            id="usuario"
+            class="form-control"
+            [(ngModel)]="user"
+          />
+        </div>
+        <div class="p-2">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            [(ngModel)]="password"
+            aria-describedby="passwordHelpBlock"
+          />
+        </div>
+        <div class="d-flex justify-content-center">
+          <input
+            type="button"
+            value="Iniciar Sesión"
+            class="btn btn-primary"
+            (click)="login()"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

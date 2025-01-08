@@ -1,0 +1,20 @@
+.orange {
+  background-color: orange;
+}
+
+.orangeDark {
+  background-color: #ff8c00;
+}
+
+.sidenav {
+  padding: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}

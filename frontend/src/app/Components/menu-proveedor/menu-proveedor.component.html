@@ -1,0 +1,45 @@
+<mat-sidenav-container style="height: 100vh" [hasBackdrop]="true">
+  <mat-sidenav #drawer class="sidenav orangeDark" mode="side">
+    <div class="container">
+      <div class="row">
+        <mat-list>
+          <mat-list-item (click)="cambioVentana('perfil')">Perfil</mat-list-item>
+          <mat-list-item (click)="cambioVentana('gestioninv')">Gestioninv</mat-list-item>
+          <mat-list-item (click)="cambioVentana('inventarioprov')">Inventario</mat-list-item>
+        </mat-list>
+        <mat-list>
+          <a
+            mat-list-item
+            class="btn btn-danger"
+            routerLink="/login"
+            (click)="logout()"
+            >Cerrar Sesion</a
+          >
+        </mat-list>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="orange">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Proveedor</span>
+      <span class="spacer"></span>
+      <div>
+        <select class="form-select orange" (change)="cambiarMoneda($event)">
+          <option *ngFor="let m of monedas; index as i" [value]="i">{{m.Nombre}}</option>
+        </select>
+      </div>
+    </mat-toolbar>
+    <div *ngIf="ventana == 'perfil'">
+      
+    </div>
+    <div *ngIf="ventana == 'gestioninv'">
+      
+    </div>
+    <div *ngIf="ventana == 'inventarioprov'">
+      
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
