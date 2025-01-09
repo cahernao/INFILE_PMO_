@@ -86,5 +86,13 @@ export class MenuClienteComponent {
     );
   }
 
+  limitarTexto(texto: string, maximoCaracteres: number = 20): string {
+    if (!texto) {
+      return '';
+    }
+  
+    return texto.length > maximoCaracteres ? texto.substring(0, maximoCaracteres) + '...' : texto;
+  }
+
 }
 
