@@ -9,6 +9,7 @@ export class BackendService {
   constructor(private http: HttpClient) {}
   private accessService: string = "http://localhost:8080/api/v1/auth"
   private noticiasService: string = "http://localhost:8080/api/v1/noticias"
+  private categoriaService: string = "http://localhost:8080/api/v1/cat"
   /*private perfilSerice: string = "XXXX"
   private inventarioService: string = "XXXX"
   private carritoService: string = "XXXX"
@@ -28,6 +29,15 @@ export class BackendService {
   verNoticias() {
     const token = sessionStorage.getItem('token') || '';
     return this.http.get(`${this.noticiasService}/test`, {
+      headers: {
+        Authorization: `Bearer ${token}` || '',
+      },
+    });
+  }
+
+  verCat() {
+    const token = sessionStorage.getItem('token') || '';
+    return this.http.get(`${this.categoriaService}/all`, {
       headers: {
         Authorization: `Bearer ${token}` || '',
       },

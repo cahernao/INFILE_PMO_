@@ -12,6 +12,8 @@ import { BackendService } from 'src/app/Services/backend.service';
 export class MenuClienteComponent {
 
   ventana: string = 'nombre';
+  noticias: any[] = [];
+  categorias:any[]=[];
 
   constructor(private backend:BackendService, 
     private auth:AuthService,
@@ -67,6 +69,19 @@ export class MenuClienteComponent {
       }
     );
   }
+
+  /*getNoticias(){
+    this.backend.verNoticias().subscribe(
+      (res:any) => {
+        if (res){
+          console.log(res.noticias)
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }*/
 
 }
 
