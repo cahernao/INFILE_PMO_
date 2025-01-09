@@ -7,7 +7,7 @@ import { environment } from 'src/app/app-constant';
 })
 export class BackendService {
   constructor(private http: HttpClient) {}
-  private accessService: string = "XXXX"
+  private accessService: string = "http://localhost:8080/api/v1/auth"
   /*private perfilSerice: string = "XXXX"
   private inventarioService: string = "XXXX"
   private carritoService: string = "XXXX"
@@ -18,7 +18,7 @@ export class BackendService {
   private devolucionService: string = "XXXX"*/
 
   login(data: any) {
-    return this.http.post(`${this.accessService}/accessService/login`, data);
+    return this.http.post(`${this.accessService}/login`, data);
   }
 
   register(data: any) {

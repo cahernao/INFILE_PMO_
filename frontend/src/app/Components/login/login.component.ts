@@ -15,21 +15,21 @@ export class LoginComponent {
 
   login() {
     const data = {
-      data: { user: this.user, password: this.password },
-      tipoU: this.tipoUsuario,
+      email: this.user,
+      password: this.password,
     };
 
-    this.backend.login(data).subscribe((res: any) => {
-      console.log(res);
-      if (res.result) {
+    this.backend.login(data).subscribe(
+      (res:any) => {
+        console.log("res "+res);
         sessionStorage.setItem('token', res.token);
-        sessionStorage.setItem('user', this.user);
-        sessionStorage.setItem('type', this.tipoUsuario);
-        alert('Login Correcto');
-        window.location.href = '/home';
-      } else {
-        alert('Error de login');
+        //sessionStorage.setItem('type', res.type);
+        //sessionStorage.setItem('id', res.id);
+        
+      },
+      (err) => {
+        console.log(err);
       }
-    });
+    );
   }
 }

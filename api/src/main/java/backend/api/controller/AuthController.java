@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
@@ -28,10 +30,10 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public String login(@RequestBody RequestRegister requestRegister) {
+    public ResponseEntity<?> login(@RequestBody RequestRegister requestRegister) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestRegister.getEmail(), requestRegister.getPassword()));
         UserDetails userDetails = userDetailsService.loadUserByUsername(requestRegister.getEmail());
-        return jwtUtil.generateToken(userDetails);
+        return ResponseEntity.ok().body(Map.of("token", jwtUtil.generateToken(userDetails)));
     }
 
     @PostMapping("/register")
