@@ -58,7 +58,7 @@ public class AuthController {
             usuarioRepository.save(nuevoUsuario);
 
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestRegister.getEmail(), requestRegister.getPassword()));
-            return ResponseEntity.ok().body("Usuario registrado exitosamente");
+            return ResponseEntity.ok().body(Map.of("message", "Usuario registrado exitosamente"));
 
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

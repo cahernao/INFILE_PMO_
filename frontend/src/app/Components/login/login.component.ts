@@ -21,13 +21,15 @@ export class LoginComponent {
 
     this.backend.login(data).subscribe(
       (res:any) => {
-        console.log("res "+res);
+        //console.log("res "+res);
         sessionStorage.setItem('token', res.token);
+        window.location.href = '/home';
         //sessionStorage.setItem('type', res.type);
         //sessionStorage.setItem('id', res.id);
         
       },
       (err) => {
+        if(err.status===403) alert('Usuario o contraseña incorrectos')
         console.log(err);
       }
     );

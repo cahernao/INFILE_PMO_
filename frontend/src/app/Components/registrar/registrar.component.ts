@@ -15,7 +15,7 @@ export class RegistrarComponent {
   
 
   cliente = {
-    nombre: '',
+    username: '',
     email: '',
     password: '',
     phone: '',
@@ -76,13 +76,13 @@ export class RegistrarComponent {
   
 
   registrar() {
-    let body = {
+    /*let body = {
       data: {},
       tipoU: this.tipoUsuario,
-    };
+    };*/
 
     if (
-      this.cliente.nombre === '' ||
+      this.cliente.username === '' ||
       this.cliente.email === '' ||
       this.cliente.password === '' ||
       this.cliente.phone === ''
@@ -90,11 +90,13 @@ export class RegistrarComponent {
       alert('Todos los campos son requeridos');
       return;
     }
-    body.data = this.cliente;
+    let body = this.cliente;
+
+    console.log("lo qu evoy a envair "+body)
 
     this.backend.register(body).subscribe((res: any) => {
       alert(res.message);
-      if (res.result) {
+      if (res.message) {
         window.location.href = '/login';
       }
     });

@@ -22,7 +22,7 @@ export class BackendService {
   }
 
   register(data: any) {
-    return this.http.post(`${this.accessService}/accessService/register`, data);
+    return this.http.post(`${this.accessService}/register`, data);
   }
 
   update(data: any) {
