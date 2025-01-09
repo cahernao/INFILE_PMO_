@@ -5,6 +5,7 @@
                 <mat-list>
                     <mat-list-item (click)="cambioVentana('inicio')">Inicio</mat-list-item>
                     <mat-list-item (click)="cambioVentana('categorias')">Categorias</mat-list-item>
+                    <mat-list-item (click)="cambioVentana('recomendaciones')">Recomendaciones</mat-list-item>
                 </mat-list>
                 <mat-list>
                     <a mat-list-item class="btn btn-danger" routerLink="/login" (click)="logout()">Cerrar Sesion</a>
@@ -52,5 +53,11 @@
             </app-noticia>
 
         </div>
+
+        <div *ngIf="ventana == 'recomendaciones'">
+        
+        </div>
+        
+
     </mat-sidenav-content>
 </mat-sidenav-container>
