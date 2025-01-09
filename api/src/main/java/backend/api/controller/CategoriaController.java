@@ -1,6 +1,7 @@
 package backend.api.controller;
 
 import backend.api.service.CategoriaService;
+import io.jsonwebtoken.lang.Maps;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,6 @@ public class CategoriaController {
 
     @GetMapping("/all")
     public ResponseEntity<?> findAll() {
-        return ResponseEntity.ok(categoriaService.findAll());
+        return ResponseEntity.ok(Maps.of("categorias",categoriaService.findAll()));
     }
 }

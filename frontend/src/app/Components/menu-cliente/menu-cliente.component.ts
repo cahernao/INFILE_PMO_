@@ -26,6 +26,7 @@ export class MenuClienteComponent {
     }
 
     this.getNoticias();
+    this.getCategorias();
 
     
   }
@@ -62,6 +63,7 @@ export class MenuClienteComponent {
       (res:any) => {
         if (res){
           console.log(res.noticias)
+          this.noticias = res.noticias;
         }
       },
       (err) => {
@@ -70,18 +72,19 @@ export class MenuClienteComponent {
     );
   }
 
-  /*getNoticias(){
-    this.backend.verNoticias().subscribe(
+  getCategorias(){
+    this.backend.verCat().subscribe(
       (res:any) => {
         if (res){
-          console.log(res.noticias)
+          console.log(res.categorias)
+          this.categorias = res.categorias;
         }
       },
       (err) => {
         console.log(err);
       }
     );
-  }*/
+  }
 
 }
 
