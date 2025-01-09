@@ -1,5 +1,6 @@
 package backend.api.service;
 
+import backend.api.dto.CategoriaDTO;
 import backend.api.model.Categoria;
 import backend.api.repository.CategoriaRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ public class CategoriaService {
 
     private final CategoriaRepository categoriaRepository;
 
-    public List<Categoria> findAll() {
-        return categoriaRepository.findAll();
+    public List<CategoriaDTO> findAll() {
+        return categoriaRepository.findAllCategorias();
     }
 }

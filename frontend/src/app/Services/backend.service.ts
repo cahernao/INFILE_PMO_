@@ -30,6 +30,7 @@ export class BackendService {
     const token = sessionStorage.getItem('token') || '';
     return this.http.get(`${this.noticiasService}/test`, {
       headers: {
+        
         Authorization: `Bearer ${token}` || '',
       },
     });
@@ -39,6 +40,7 @@ export class BackendService {
     const token = sessionStorage.getItem('token') || '';
     return this.http.get(`${this.categoriaService}/all`, {
       headers: {
+        Accept:'application/json',
         Authorization: `Bearer ${token}` || '',
       },
     });
