@@ -26,9 +26,10 @@ export class BackendService {
     return this.http.post(`${this.accessService}/register`, data);
   }
   verNoticias() {
+    const token = sessionStorage.getItem('token') || '';
     return this.http.get(`${this.noticiasService}/test`, {
       headers: {
-        Authorization: sessionStorage.getItem('token') || '',
+        Authorization: `Bearer ${token}` || '',
       },
     });
   }

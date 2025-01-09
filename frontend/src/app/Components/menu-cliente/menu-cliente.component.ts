@@ -23,6 +23,8 @@ export class MenuClienteComponent {
       this.router.navigate(['/login']);
     }
 
+    this.getNoticias();
+
     
   }
 
@@ -56,7 +58,9 @@ export class MenuClienteComponent {
   getNoticias(){
     this.backend.verNoticias().subscribe(
       (res:any) => {
-        console.log(res.noticias);
+        if (res){
+          console.log(res.noticias)
+        }
       },
       (err) => {
         console.log(err);
