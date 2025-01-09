@@ -11,7 +11,7 @@ import { BackendService } from 'src/app/Services/backend.service';
 })
 export class MenuClienteComponent {
 
-  ventana: string = 'categorias';
+  ventana: string = 'inicio';
   noticias: any[] = [];
   categorias:any[]=[];
   noticia:any=null;
@@ -93,6 +93,11 @@ export class MenuClienteComponent {
     }
   
     return texto.length > maximoCaracteres ? texto.substring(0, maximoCaracteres) + '...' : texto;
+  }
+
+  verNoticia(not:any){
+    this.noticia = not;
+    this.cambioVentana('noticia');
   }
 
 }
