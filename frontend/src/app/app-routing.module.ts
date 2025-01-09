@@ -4,6 +4,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegistrarComponent } from './Components/registrar/registrar.component';
 import { MenuProveedorComponent } from './Components/menu-proveedor/menu-proveedor.component';
 import { MenuClienteComponent } from './Components/menu-cliente/menu-cliente.component';
+import { AuthGuard } from './Guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: MenuClienteComponent
+    component: MenuClienteComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

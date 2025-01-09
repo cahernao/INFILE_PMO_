@@ -10,8 +10,6 @@ import java.util.List;
 
 @NoRepositoryBean
 public interface GenericRepository<T, ID> extends JpaRepository<T, ID> {
-    @Query("SELECT t FROM #{#entityName} t WHERE t.isDeleted = false")
-    List<T> findAllActive();
 
     @Query("SELECT t FROM #{#entityName} t")
     Page<T> findAllWithPagination(Pageable pageable);
