@@ -24,21 +24,26 @@
         <div *ngIf="ventana == 'categorias'">
             <div class="row m-5">
                 <h1>Categorias</h1>
-                <ul class="list-group">
-                    <li *ngFor="let categoria of categorias">
-                        <a href="">{{ categoria.nombre }}</a>
-                      </li>
-
-                    <li class="list-group-item"><a href="1">Cras justo odio</a></li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                <ul class="list-group" *ngFor="let categoria of categorias">
+                    <li class="list-group-item">{{categoria.nombre}}</li>
                 </ul>
             </div>
 
         </div>
         <div *ngIf="ventana == 'inicio'">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let noticia of noticias">
+                    <div class="card text-center">
+                        <img [src]="noticia.imagen" class="card-img-top w-30" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">{{ noticia.titulo }}</h5>
+                            <p class="card-text"> {{ noticia.contenido }}</p>
+                            <button class="btn btn-primary">Ver mas</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
         <div *ngIf="ventana == 'inventarioprov'">
