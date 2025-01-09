@@ -53,5 +53,16 @@ export class MenuClienteComponent {
     this.ventana = nombre;
   }
 
+  getNoticias(){
+    this.backend.verNoticias().subscribe(
+      (res:any) => {
+        console.log(res.noticias);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
 }
 

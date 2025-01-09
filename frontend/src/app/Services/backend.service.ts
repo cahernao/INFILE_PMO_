@@ -8,6 +8,7 @@ import { environment } from 'src/app/app-constant';
 export class BackendService {
   constructor(private http: HttpClient) {}
   private accessService: string = "http://localhost:8080/api/v1/auth"
+  private noticiasService: string = "http://localhost:8080/api/v1/noticias"
   /*private perfilSerice: string = "XXXX"
   private inventarioService: string = "XXXX"
   private carritoService: string = "XXXX"
@@ -24,13 +25,12 @@ export class BackendService {
   register(data: any) {
     return this.http.post(`${this.accessService}/register`, data);
   }
-
-  update(data: any) {
-    return this.http.put(`${this.accessService}/accessService/update`, data);
-  }
-
-  delete(data: any) {
-    return this.http.post(`${this.accessService}/accessService/delete`, data);
+  verNoticias() {
+    return this.http.get(`${this.noticiasService}/test`, {
+      headers: {
+        Authorization: sessionStorage.getItem('token') || '',
+      },
+    });
   }
 
   /*perfil(data: any) {
