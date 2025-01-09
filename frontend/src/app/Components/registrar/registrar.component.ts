@@ -101,4 +101,8 @@ export class RegistrarComponent {
       }
     });
   }
+
+  deshabilitar():boolean{
+    return this.mensajeValidacion !== '' || this.mensajeCorreo !== '' || this.mensajeTelefono !== '';
+  }
 }

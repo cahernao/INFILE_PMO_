@@ -11,7 +11,7 @@ import { BackendService } from 'src/app/Services/backend.service';
 })
 export class MenuClienteComponent {
 
-  ventana: string = 'nombre';
+  ventana: string = 'categorias';
   noticias: any[] = [];
   categorias:any[]=[];
 
