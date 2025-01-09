@@ -14,6 +14,7 @@ export class MenuClienteComponent {
   ventana: string = 'categorias';
   noticias: any[] = [];
   categorias:any[]=[];
+  noticia:any=null;
 
   constructor(private backend:BackendService, 
     private auth:AuthService,

@@ -21,6 +21,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MenuProveedorComponent } from './Components/menu-proveedor/menu-proveedor.component';
 import { MenuClienteComponent } from './Components/menu-cliente/menu-cliente.component';
+import { NoticiaComponent } from './Components/noticia/noticia.component';
 
 
 
@@ -32,6 +33,7 @@ import { MenuClienteComponent } from './Components/menu-cliente/menu-cliente.com
     MenuInicialComponent,
     MenuProveedorComponent,
     MenuClienteComponent,
+    NoticiaComponent,
   ],
   imports: [
     BrowserModule,

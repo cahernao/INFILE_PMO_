@@ -5,6 +5,7 @@
                 <mat-list>
                     <mat-list-item (click)="cambioVentana('inicio')">Inicio</mat-list-item>
                     <mat-list-item (click)="cambioVentana('categorias')">Categorias</mat-list-item>
+                    <mat-list-item (click)="cambioVentana('noticia')">Noticia</mat-list-item>
                 </mat-list>
                 <mat-list>
                     <a mat-list-item class="btn btn-danger" routerLink="/login" (click)="logout()">Cerrar Sesion</a>
@@ -46,7 +47,10 @@
             </div>
 
         </div>
-        <div *ngIf="ventana == 'inventarioprov'">
+        <div *ngIf="ventana == 'noticia'">
+            <app-noticia>
+
+            </app-noticia>
 
         </div>
     </mat-sidenav-content>
