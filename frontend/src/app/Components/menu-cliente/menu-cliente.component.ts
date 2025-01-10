@@ -16,6 +16,8 @@ export class MenuClienteComponent {
   categorias:any[]=[];
   noticia:any=null;
 
+  recomendaciones: any[] = [];
+
   constructor(private backend:BackendService, 
     private auth:AuthService,
     private router:Router
@@ -28,6 +30,7 @@ export class MenuClienteComponent {
 
     this.getNoticias();
     this.getCategorias();
+    this.getRecomendados();
 
     
   }
@@ -98,6 +101,20 @@ export class MenuClienteComponent {
   verNoticia(not:any){
     this.noticia = not;
     this.cambioVentana('noticia');
+  }
+
+  getRecomendados(){
+    this.backend.verRecomendados().subscribe(
+      (res:any) => {
+        if (res){
+          console.log(res.noticias)
+          this.recomendaciones = res.noticias;
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
 }

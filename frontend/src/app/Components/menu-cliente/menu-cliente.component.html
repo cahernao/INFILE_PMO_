@@ -32,7 +32,7 @@
 
         </div>
         <div *ngIf="ventana == 'inicio'">
-            <div class="row">
+            <div class="row" *ngIf="noticias!==null">
                 <div class="col-md-4" *ngFor="let noticia of noticias">
                     <div class="card text-center">
                         <img [src]="noticia.imagen" class="card-img-top w-30" alt="..." />
@@ -43,7 +43,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -55,9 +54,22 @@
         </div>
 
         <div *ngIf="ventana == 'recomendaciones'">
-        
+
+            <div class="row" *ngIf="recomendaciones!==null">
+                <div class="col-md-4" *ngFor="let noticia of recomendaciones">
+                    <div class="card text-center">
+                        <img [src]="noticia.imagen" class="card-img-top w-30" alt="..." />
+                        <div class="card-body">
+                            <h2 class="card-title">{{ noticia.titulo }}</h2>
+                            <p class="card-text"> {{ limitarTexto(noticia.contenido) }}</p>
+                            <button class="btn btn-primary" (click)="verNoticia(noticia)">Ver mas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        
+
 
     </mat-sidenav-content>
 </mat-sidenav-container>
