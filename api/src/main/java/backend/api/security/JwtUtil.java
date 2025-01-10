@@ -60,6 +60,15 @@ public class JwtUtil {
         return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
+    public String extractClaim(String token, String claimKey) {
+        Claims claims = extractAllClaims(token);
+        return claims.get(claimKey, String.class);
+    }
+
+    public String extractEmail(String token) {
+        return extractClaim(token, "sub");
+    }
+
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
